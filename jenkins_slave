@@ -1,1 +1,16 @@
-# your Home work
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Name', defaultValue: 'Tuchsanai', description: 'Enter your name')
+         string(name: 'Age', defaultValue:'0', description: 'your age')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Slave ${params.Name} of ${params.Age}"
+                sh "python3 Week7/Homework/myscript.py ${params.Name} --age ${params.Age}"
+                
+            }
+        }
+    }
+}
